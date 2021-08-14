@@ -5,7 +5,7 @@ const WordSchema=mongoose.Schema({
     type:String,
     required:true
   },
-  definition:{
+  meaning:{
     type:String,
     required:true
   },
