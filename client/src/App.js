@@ -9,14 +9,14 @@ function App() {
     const name=event.target.name.value
     const meaning=event.target.meaning.value
     const explanition=event.target.explanition.value
-    const blogData={
+    const wordData={
       name,
       meaning,
       explanition
 
     }
-    console.log(blogData);
-    await axios.post("http://localhost:5000/words",blogData)
+    console.log(wordData);
+    await axios.post("http://localhost:5000/words",wordData)
     window.location.replace("/")
 
   }
