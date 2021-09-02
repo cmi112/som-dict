@@ -1,0 +1,1 @@
+{"version":3,"sources":["webpack://src/App.css"],"names":[],"mappings":"AAAA,KACE,WAEF,CACA,WAFE,gBAMF,CAJA,MAEE,WAAW,CACX,YACF","file":"main.55c643a0.chunk.css","sourcesContent":["body {\n  margin: 20px;\n  border: 1px solid;\n}\n.form {\n  border: 1px solid;\n  margin:50px;\n  padding: 50px\n}"]}
