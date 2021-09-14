@@ -13,6 +13,14 @@ const distDir = __dirname + "/views/";
 app.use(express.static(distDir));
 
 
+if(process.env.NODE_ENV==="production"){
+ app.use(express.static("build"));
+ app.get("*",(req,res)=>{
+   req.sendFile(path.resolve(__dirname,"build","index.html"))
+ })
+}
+
+
 // Get back all the Posts
 app.get("/words",async (req,res)=>{
   try{
