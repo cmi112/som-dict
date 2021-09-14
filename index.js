@@ -8,6 +8,9 @@ const WordSchema = require("./models/wordSchema.js")
 const app=express()
 app.use(express.json())
 app.use(cors())
+const distDir = __dirname + "/views/";
+
+app.use(express.static(distDir));
 
 
 // Get back all the Posts
