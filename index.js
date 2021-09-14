@@ -65,5 +65,12 @@ mongoose.connect(process.env.DB_CONNECTION,{ useNewUrlParser: true ,useUnifiedTo
   console.log("Connected to DB");
 })
 
+const port = process.env.PORT || 5000;
 
-app.listen(5000,()=>console.log("Server started on Port 5000"))
+
+app.listen(port,(err)=>{
+  if(err) return console.log(err)
+  console.log("Server started on Port 5000")
+ 
+  
+})
