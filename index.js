@@ -7,7 +7,7 @@ const WordSchema = require("./models/wordSchema.js")
 
 
 // ** MIDDLEWARE ** //
-const whitelist = ['http://localhost:3000', 'http://localhost:5000', 'https://git.heroku.com/somdict.git']
+const whitelist = ['http://localhost:3000', 'http://localhost:5000', 'https://somdict.herokuapp.com']
 const corsOptions = {
   origin: function (origin, callback) {
     console.log("** Origin of request " + origin)
