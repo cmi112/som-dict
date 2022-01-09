@@ -8,7 +8,7 @@ const WordSchema = require("./models/wordSchema.js")
 const app=express()
 app.use(express.json())
 app.use(cors())
-const distDir = __dirname + "/views/";
+const distDir = __dirname + "client/build";
 
 app.use(express.static(distDir));
 
@@ -16,7 +16,7 @@ app.use(express.static(distDir));
 if(process.env.NODE_ENV==="production"){
  app.use(express.static("build"));
  app.get("*",(req,res)=>{
-   req.sendFile(path.resolve(__dirname,"views","build","index.html"))
+   req.sendFile(path.resolve(__dirname,"client","build","index.html"))
  })
 }
 
