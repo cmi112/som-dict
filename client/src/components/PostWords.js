@@ -17,8 +17,10 @@ function PostWords() {
 
     }
     console.log(wordData);
-    await axios.post("http://localhost:5000/words",wordData)
+    await axios.post("http://localhost:5000/words", wordData)
     window.location.replace("/")
+    setTimeout(() => {console.log("this is the third message")}, 1000);
+    
   }
   return (
     <Form onSubmit={submit} className="form">
