@@ -1,29 +1,33 @@
 require('dotenv').config()
 const express=require ("express");
 const cors = require('cors')
-const mongoose=require("mongoose")
+const mongoose = require("mongoose")
+const app=express()
+app.use(express.json())
 const WordSchema = require("./models/wordSchema.js")
 
+// server = node index.js
+// client = npm start
 
 
 // ** MIDDLEWARE ** //
-const whitelist = ['http://localhost:3000', 'http://localhost:5000', 'https://git.heroku.com/somdict.git']
-const corsOptions = {
-  origin: function (origin, callback) {
-    console.log("** Origin of request " + origin)
-    if (whitelist.indexOf(origin) !== -1 || !origin) {
-      console.log("Origin acceptable")
-      callback(null, true)
-    } else {
-      console.log("Origin rejected")
-      callback(new Error('Not allowed by CORS'))
-    }
-  }
-}
-app.use(cors(corsOptions))
+// const whitelist = ['http://localhost:3000', 'http://localhost:5000', 'https://git.heroku.com/somdict.git']
+// const corsOptions = {
+//   origin: function (origin, callback) {
+//     console.log("** Origin of request " + origin)
+//     if (whitelist.indexOf(origin) !== -1 || !origin) {
+//       console.log("Origin acceptable")
+//       callback(null, true)
+//     } else {
+//       console.log("Origin rejected")
+//       callback(new Error('Not allowed by CORS'))
+//     }
+//   }
+// }
+// app.use(cors(corsOptions))
 
 
-const app=express()
+
 app.use(express.json())
 app.use(cors())
 const distDir = __dirname + "client/build";
@@ -48,6 +52,19 @@ res.json(words)
     res.json({Message:err})
   }
 })
+
+// Get single Item 
+// ##############
+//#########Find single word not working fix it #########
+//##############
+app.get("/words/:postId",async(req,res)=>{
+  try{
+    const post=await WordSchema.findOne({_id:Number(req.params.postId)})
+    res.json(post)
+  }catch(err){
+    res.json({message:err})
+  }
+})
 // Submits a post
 
 app.post("/words",async (req,res)=>{
@@ -66,6 +83,9 @@ console.log(word);
   }
 
 })
+
+
+
 
 // Add headers
 app.use(function (req, res, next) {
